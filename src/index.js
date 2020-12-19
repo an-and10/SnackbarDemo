@@ -6,15 +6,15 @@ import reportWebVitals from './reportWebVitals';
 import SnackbarProvider from './component/SnackbarProvider';
 import { store } from './store';
 import { Provider } from 'react-redux';
+import theme from './utils/theme';
+import { MuiThemeProvider } from '@material-ui/core';
 
 ReactDOM.render(
-	<React.StrictMode>
-		<Provider store={store}>
-			<SnackbarProvider>
-				<App />
-			</SnackbarProvider>
-		</Provider>
-	</React.StrictMode>,
+	<Provider store={store}>
+		<SnackbarProvider>
+			<App />
+		</SnackbarProvider>
+	</Provider>,
 	document.getElementById('root')
 );
 

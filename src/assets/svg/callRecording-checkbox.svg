@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12">
+	<defs>
+		<style>.a{fill:none;}.b{fill:#9ca4af;}</style>
+	</defs>
+	<path class="a" d="M0,0H12V12H0Z" />
+	<path class="b" d="M7.52,2a5.52,5.52,0,1,0,5.52,5.52A5.522,5.522,0,0,0,7.52,2Zm-1.1,8.28L3.656,7.52l.778-.778L6.416,8.718l4-3.819.778.784Z" transform="translate(-1.52 -1.52)" />
+</svg>

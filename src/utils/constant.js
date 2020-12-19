@@ -35,11 +35,10 @@ export const DEFAULTS = {
 };
 
 export const capitalise = (text) =>
-	text.charAt(0).toUpperCase() + text.slice(1);
+	text?.charAt(0).toUpperCase() + text?.slice(1);
 
 export const originKeyExtractor = (anchor) =>
 	`${capitalise(anchor.vertical)}${capitalise(anchor.horizontal)}`;
-
 /**
  * Omit SnackbarContainer class keys that are not needed for SnackbarComponent
  */

@@ -30,7 +30,7 @@ export const useSnackbar = () => {
 				queue: queue.slice(1, queue.length),
 			};
 		}
-		console.log('ABCD process endddD', state);
+		console.log('ABCD process end', state);
 		return state;
 	};
 

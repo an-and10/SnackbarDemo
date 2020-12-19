@@ -13,7 +13,7 @@ const defaultState = {
 	notifications: [],
 	snacks: [],
 	queue: [],
-	maxSnackLength: 1,
+	maxSnackLength: 4,
 };
 
 export default (state = defaultState, action) => {

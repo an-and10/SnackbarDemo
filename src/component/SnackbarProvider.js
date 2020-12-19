@@ -264,6 +264,7 @@ const SnackbarProvider = (props) => {
 
 	const categ = props.snacks.reduce((acc, current) => {
 		const category = originKeyExtractor(DEFAULTS.anchorOrigin);
+		console.log('TEXT category', category);
 		const existingOfCategory = acc[category] || [];
 		return {
 			...acc,

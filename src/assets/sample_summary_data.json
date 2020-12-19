@@ -1,0 +1,55 @@
+[
+  {
+    "entities": {},
+    "confidence": 0.5678654392560323,
+    "intent": "invoice_received",
+    "summary": "Client has received invoices <invoice>"
+  },
+  {
+    "entities": {
+      "invoices": [
+        12,
+        123,
+        1234
+      ],
+      "amount-of-money": [
+        "4000"
+      ],
+      "time": [
+        "2018-12-12T03:49:24.000-08:00"
+      ]
+    },
+    "confidence": 0.7783689002195994,
+    "intent": "will_pay",
+    "summary": "Create Promise to pay for 4000 to be paid by 2018-12-12T03:49:24.000-08:00 for <4 invoices>"
+  },
+  {  
+    "entities": {
+      "amount-of-money": [
+        "4000"
+      ],
+      "time": [
+        "2019-01-01T00:00:00.000-08:00"
+      ]
+    },
+    "confidence": 0.6001523041725159,
+    "intent": "will_pay",
+    "summary": "Create Promise to pay for 4000 to be paid by 2019-01-01T00:00:00.000-08:00 for <X invoices>"
+  },
+  {
+    "entities": {
+      "amount-of-money": [
+        "4000"
+      ],
+      "invoice": [
+        "230389","723032","123"
+      ],
+      "time": [
+          "2018-12-19T00:00:00.000-08:00"
+      ]
+    },
+    "confidence": 0.7684387703736624,
+    "intent": "dispute",
+    "summary": "Create Dispute for <9 invoices> because of Wrong Product"
+  }
+]

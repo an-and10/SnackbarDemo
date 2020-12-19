@@ -25,6 +25,10 @@ import defaultIconVariants from '../utils/defaultIconVariants';
 import createChainedFunction from '../utils/createChainedFunction';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+import { ReactComponent as Hourglass } from '../assets/svg/hourglass-start-solid.svg';
+import { ReactComponent as DoneIcon } from '../assets/check-icon.svg';
+import { ReactComponent as WarningIcon } from '../assets/error-snack.svg';
+import { pxToRem } from '../utils/theme';
 
 // import Snackbar from './Snackbar';
 
@@ -38,44 +42,43 @@ const styles = (theme) => {
 		lessPadding: {
 			paddingLeft: 8 * 2.5,
 		},
-		variantSuccess: {
-			backgroundColor: '#43a047 !important', // green
-			color: '#fff !important',
-		},
-		variantError: {
-			backgroundColor: '#d32f2f !important', // dark red
-			color: '#fff !important',
-		},
-		variantInfo: {
-			backgroundColor: '#2196f3 !important', // nice blue
-			color: '#fff !important',
-		},
-		variantWarning: {
-			backgroundColor: '#ff9800 !important', // amber
-			color: '#fff !important',
-		},
-		contentRoot: {
-			...theme.typography.body2,
-			backgroundColor,
-			color: theme.palette.getContrastText(backgroundColor),
-			alignItems: 'center',
-			padding: '6px 16px',
-			borderRadius: '4px',
-			boxShadow:
-				'0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12)',
-		},
-		message: {
-			display: 'flex',
-			alignItems: 'center',
-			padding: '8px 0',
-		},
-		action: {
-			display: 'flex',
-			alignItems: 'center',
-			marginLeft: 'auto',
-			paddingLeft: 16,
-			marginRight: -8,
-		},
+		// variantSuccess: {
+		// 	backgroundColor: '#43a047 !important', // green
+		// 	color: '#fff !important',
+		// },
+		// variantError: {
+		// 	backgroundColor: '#d32f2f !important', // dark red
+		// 	color: '#fff !important',
+		// },
+		// variantInfo: {
+		// 	backgroundColor: '#2196f3 !important', // nice blue
+		// 	color: '#fff !important',
+		// },
+		// variantWarning: {
+		// 	backgroundColor: '#ff9800 !important', // amber
+		// 	color: '#fff !important',
+		// },
+		// contentRoot: {
+		// 	backgroundColor,
+		// 	color: theme.palette.getContrastText(backgroundColor),
+		// 	alignItems: 'center',
+		// 	padding: '6px 16px',
+		// 	borderRadius: '4px',
+		// 	boxShadow:
+		// 		'0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12)',
+		// },
+		// message: {
+		// 	display: 'flex',
+		// 	alignItems: 'center',
+		// 	padding: '8px 0',
+		// },
+		// action: {
+		// 	display: 'flex',
+		// 	alignItems: 'center',
+		// 	marginLeft: 'auto',
+		// 	paddingLeft: 16,
+		// 	marginRight: -8,
+		// },
 		wrappedRoot: {
 			position: 'relative',
 			transform: 'translateX(0)',
@@ -102,32 +105,39 @@ const styles = (theme) => {
 			marginBottom: SNACKBAR_INDENTS.snackbar.dense,
 		},
 		inProgress: {
-			width: theme.typography.pxToRem(450),
+			width: pxToRem(450),
+			// backgroundColor: '#2196f3 !important', // nice blue
+			// color: '#fff !important',
 		},
 		error: {
 			backgroundColor: '#FFE5E5',
-			width: theme.typography.pxToRem(555),
+			width: pxToRem(555),
+			backgroundColor: '#d32f2f !important', // dark red
+			color: '#fff !important',
 		},
 		success: {
-			width: theme.typography.pxToRem(555),
+			width: pxToRem(555),
+			// backgroundColor: '#43a047 !important', // green
+			color: '#fff !important',
 		},
 		errorIcon: {
-			width: theme.typography.pxToRem(24),
-			height: theme.typography.pxToRem(24),
+			width: pxToRem(24),
+			height: pxToRem(24),
+			height: pxToRem(24),
 			paddingTop: '0.5rem',
 		},
 		icon: {
-			marginRight: 0,
+			marginRight: pxToRem(10),
 			marginTop: 0,
 		},
 		inProgressIcon: {
 			width: '0.9vw',
 			height: '2vh',
-			animation: ' spin 1.5s linear infinite forwards',
+			animation: '$spin 1.5s linear infinite forwards',
 		},
 		successIcon: {
-			width: theme.typography.pxToRem(24),
-			height: theme.typography.pxToRem(24),
+			width: pxToRem(24),
+			height: pxToRem(24),
 			paddingTop: '0.3rem',
 		},
 		'@keyframes spin': {
@@ -143,7 +153,7 @@ const styles = (theme) => {
 		},
 		loading: {
 			content: '.',
-			animation: 'dots 0.5s steps(5, end) infinite',
+			animation: '$dots 0.5s steps(5, end) infinite',
 		},
 		'@keyframes dots': {
 			'0%': {},
@@ -169,28 +179,72 @@ const styles = (theme) => {
 		},
 		mainContentHeader: { display: 'flex', alignItems: 'center' },
 		nostyle: {},
+
+		anchorOriginBottomLeft: {
+			'@media (min-width: 600px)': {
+				left: pxToRem(24),
+				bottom: pxToRem(24),
+			},
+			left: pxToRem(24),
+			bottom: pxToRem(24),
+			right: 'auto',
+		},
+		root: { boxSizing: 'border-box' },
+		snackbarContentRoot: {
+			'@media (min-width: 600px)': {
+				boxSizing: 'border-box',
+				minWidth: pxToRem(450),
+				maxWidth: pxToRem(568),
+				borderRadius: pxToRem(8),
+				flexWrap: 'nowrap',
+				wordBreak: 'break-word',
+			},
+			backgroundColor: '#E5F3FF',
+			minWidth: pxToRem(450),
+			minHeight: pxToRem(70),
+			padding: `${pxToRem(6)} ${pxToRem(24)} ${pxToRem(6)} ${pxToRem(24)}`,
+			borderRadius: pxToRem(8),
+			opacity: 1,
+			flexWrap: 'nowrap',
+			wordBreak: 'break-word',
+			marginLeft: '3.85vw',
+			marginBottom: '1.8vh',
+			boxSizing: 'border-box',
+		},
+		action: {
+			paddingLeft: pxToRem(24),
+			marginRight: `-${pxToRem(8)}`,
+			color: 'inherit',
+		},
+		message: {
+			paddingTop: pxToRem(8),
+			paddingBottom: pxToRem(5),
+			color: '#435368',
+			fontWeight: 'bold',
+			fontSize: pxToRem(20),
+		},
 	});
 };
 
-const SnackbarComponent = ({ classes, ...props }) => {
+const SnackbarComponent = React.forwardRef(({ classes, ...props }, ref) => {
 	const getIconVariantObj = (getCurrSnack) => {
 		switch (getCurrSnack?.variant) {
 			case 'inProgress':
 				return {
 					class: classes.inProgressIcon,
-					icon: CloseIcon,
+					icon: Hourglass,
 					actionStyle: classes.actionstyle,
 				};
 			case 'error':
 				return {
 					class: classes.errorIcon,
-					icon: CloseIcon,
+					icon: WarningIcon,
 					actionStyle: classes.actionstyle,
 				};
 			case 'success':
 				return {
 					class: classes.successIcon,
-					icon: CloseIcon,
+					icon: DoneIcon,
 					actionStyle: classes.actionstyle,
 				};
 			default:
@@ -277,10 +331,10 @@ const SnackbarComponent = ({ classes, ...props }) => {
 		...singleSnackProps
 	} = snack;
 
-	const icon = {
-		...defaultIconVariants,
-		...iconVariant,
-	}[variant];
+	// const icon = {
+	// 	...defaultIconVariants,
+	// 	...iconVariant,
+	// }[variant];
 
 	const ariaAttributes = {
 		'aria-describedby': 'notistack-snackbar',
@@ -358,14 +412,16 @@ const SnackbarComponent = ({ classes, ...props }) => {
 				{...singleSnackProps}
 				open={open}
 				className={clsx(
-					classes.root,
 					classes.wrappedRoot,
 					classes[transformer.toAnchorOrigin(anchorOrigin)]
 				)}
 				onClose={handleClose}
 				key={snack?.key}
 				autoHideDuration={duration}
-				open={open}
+				classes={{
+					anchorOriginBottomLeft: classes.anchorOriginBottomLeft,
+					root: classes.root,
+				}}
 			>
 				{/* @ts-ignore */}
 				<TransitionComponent
@@ -388,6 +444,7 @@ const SnackbarComponent = ({ classes, ...props }) => {
 					{/* @ts-ignore */}
 					{content || (
 						<SnackbarContent
+							ref={ref}
 							{...ariaAttributes}
 							role="alert"
 							style={style}
@@ -398,10 +455,15 @@ const SnackbarComponent = ({ classes, ...props }) => {
 							// 	otherClassName,
 							// 	singleClassName
 							// )}
+							classes={{
+								root: classes.snackbarContentRoot,
+								action: classes.action,
+								message: classes.message,
+							}}
 							action={
 								<IconButton
 									aria-label="close"
-									color="inherit"
+									color="#000000"
 									onClick={handleClose}
 								>
 									{snack?.variant === 'inProgress' || <CloseIcon />}
@@ -410,7 +472,7 @@ const SnackbarComponent = ({ classes, ...props }) => {
 							className={clsx(
 								classes[snack?.variant],
 								variantObj?.actionStyle,
-								classes.contentRoot
+								classes[transformer.toVariant(variant)]
 							)}
 							{...modifiedCurrSnack}
 						/>
@@ -419,6 +481,6 @@ const SnackbarComponent = ({ classes, ...props }) => {
 			</Snackbar>
 		</Collapse>
 	);
-};
+});
 
 export default withStyles(styles)(SnackbarComponent);
